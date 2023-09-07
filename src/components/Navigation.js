@@ -6,10 +6,10 @@ class Navigation extends React.Component {
         return (
             <div className='navigation'>
                 <ul>
-                    <NavLink to="/">
+                    <NavLink to="/parking">
                         <li>Accueil</li>
                     </NavLink>
-                    <NavLink to="/about">
+                    <NavLink to="/parking/about">
                         <li>A propos</li>
                     </NavLink>
                 </ul>

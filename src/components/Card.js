@@ -24,7 +24,7 @@ function Card (props) {
             <div className="card" style={{width: '18rem'}}>
                 <div className="card-body">
                     <h5 className="card-title mb-3">{props.parking.nom}{icon}</h5>
-                    <h6 className="card-subtitle mb-2 text-body-secondary">{props.parking.places}</h6>
+                    <h6 className="card-subtitle mb-2 text-body-secondary">Places restantes : {props.parking.places}</h6>
                     <div className="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
                         <div className={"progress-bar progress-bar-striped "+background} style={{width: props.parking.taux_doccupation + "%"}}></div>
                     </div>

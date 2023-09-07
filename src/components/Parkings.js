@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from '../components/Card';
+import Clock from '../components/Clock';
 
 
 class Parkings extends React.Component {
@@ -52,9 +53,7 @@ class Parkings extends React.Component {
 
         return (
             <div className='parkings'>
-                <p>Dernière actualisation : 
-                    <span className='clock'>{this.state.time}</span>
-                </p>
+                <Clock time={this.state.time} />
                 <div className='row'>
                     {this.state.data.map((parking) => (
                         <Card parking={parking} key={parking.id}/>
