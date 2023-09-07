@@ -1,0 +1,10 @@
+.clock {
+    font-family: monospace; // Utilisation d'une police monospace pour une apparence uniforme
+    font-size: 1.2rem;      // Taille de police réglable
+    background-image: linear-gradient(to right top, $vert, $jaune);
+    color: #fff;            // Couleur du texte
+    padding: 4px 8px;       // Espacement intérieur
+    border-radius: 4px;     // Coins arrondis
+    display: inline-block;  // Pour s'assurer que le conteneur a la largeur minimale nécessaire
+    margin: 5px 20px;
+  }
