@@ -31,26 +31,26 @@ class Parkings extends React.Component {
             .then((response) => {
                 // Mettre à jour l'état data avec les données de la réponse
                 this.setState({ data: response.data.results });
+                
+                // mise à jour de l'heure de la dernière actualisation de la base de données
+                const update_date = new Date(response.data.results[0].derniere_mise_a_jour_base);
+                const options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+                };
+                const formattedDate = update_date.toLocaleString('fr-FR', options);
+                this.setState({ time: formattedDate })
+
             })
             .catch((error) => {
                 console.error("Erreur lors de la récupération des données de l'API :", error);
             });
-        const currentDate = new Date();
-        let hours = currentDate.getHours();
-        if (hours < 10){
-            hours = '0' + hours;
-        }
-        let minutes = currentDate.getMinutes();
-        if (minutes < 10){
-            minutes = '0' + minutes;
-        }
-
-
-        this.setState({ time: hours + ':' + minutes })
     }
 
     render() {
-
         return (
             <div className='parkings'>
                 <Clock time={this.state.time} />
