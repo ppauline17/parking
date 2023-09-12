@@ -1,10 +1,29 @@
 .clock {
-    font-family: monospace; // Utilisation d'une police monospace pour une apparence uniforme
-    font-size: 1.2rem;      // Taille de police réglable
-    background-image: linear-gradient(to right top, $vert, $jaune);
-    color: #fff;            // Couleur du texte
-    padding: 5px 10px;       // Espacement intérieur
-    border-radius: 10px;     // Coins arrondis
-    display: inline-block;  // Pour s'assurer que le conteneur a la largeur minimale nécessaire
-    margin: 5px 20px;
+  font-family: monospace; // Utilisation d'une police monospace pour une apparence uniforme
+  font-size: 1.2rem;      // Taille de police réglable
+  color: #fff;            // Couleur du texte
+  padding: 5px 10px;       // Espacement intérieur
+  border-radius: 10px;     // Coins arrondis
+  display: inline-block;  // Pour s'assurer que le conteneur a la largeur minimale nécessaire
+  margin: 5px 20px;
+  background-image: linear-gradient(90deg, $vert, $jaune, $orange, $jaune, $vert);; /* Début de l'animation */
+  animation: gradientAnimation 30s linear infinite; /* Animation de 5 secondes, en boucle */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0px;
   }
+  25% {
+      background-position: -150px;
+  }
+  50% {
+      background-position: -300px;
+  }
+  75% {
+      background-position: -150px;
+  }
+  100% {
+      background-position: 0px;
+  }
+}
