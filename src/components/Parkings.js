@@ -52,7 +52,7 @@ class Parkings extends React.Component {
 
     render() {
         return (
-            <div className='parkings'>
+            <div className='parkings mb-5'>
                 <Clock time={this.state.time} />
                 <div className='row'>
                     {this.state.data.map((parking) => (
