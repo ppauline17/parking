@@ -1,8 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import Card from '../components/Card';
 import Clock from '../components/Clock';
-
+import {fetchData} from '../datas/fetchData';
 
 class Parkings extends React.Component {
     constructor(props) {
@@ -15,39 +14,33 @@ class Parkings extends React.Component {
 
     componentDidMount(){
         // appel de la fonction au chargement de la page
-        this.fetchData();
+        this.setData();
 
         // puis appel toutes les minutes pour actualiser les données
         setInterval(() => {
-            this.fetchData();
+            this.setData();
         }, 1000 * 60);
     }
    
 
-    fetchData() {
-        // Effectuer la requête API ici
-        axios
-            .get("https://data.grandpoitiers.fr/api/explore/v2.1/catalog/datasets/mobilites-stationnement-des-parkings-en-temps-reel/records?limit=20")
-            .then((response) => {
-                // Mettre à jour l'état data avec les données de la réponse
-                this.setState({ data: response.data.results });
-                
-                // mise à jour de l'heure de la dernière actualisation de la base de données
-                const update_date = new Date(response.data.results[0].derniere_mise_a_jour_base);
-                const options = {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit'
-                };
-                const formattedDate = update_date.toLocaleString('fr-FR', options);
-                this.setState({ time: formattedDate })
-
-            })
-            .catch((error) => {
-                console.error("Erreur lors de la récupération des données de l'API :", error);
-            });
+    setData() {
+        fetchData()
+          .then(data => {
+            // Mettre à jour l'état data avec les données de la réponse
+            this.setState({ data: data.results });
+      
+            // Mise à jour de l'heure de la dernière actualisation de la base de données
+            const update_date = new Date(data.results[0].derniere_mise_a_jour_base);
+            const options = {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit'
+            };
+            const formattedDate = update_date.toLocaleString('fr-FR', options);
+            this.setState({ time: formattedDate });
+        })
     }
 
     render() {
